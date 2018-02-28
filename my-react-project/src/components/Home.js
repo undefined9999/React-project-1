@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import '../style/Home.scss';
 import Home1 from './Home1';
+import List1 from './List1';
+import Cart1 from './Cart1';
 
 import {
   BrowserRouter as Router,
@@ -12,7 +14,10 @@ export default class Home extends Component {
 	render() {
 		return (
 			<div id="app">
-				< Home1 />
+			
+				<Route exact path="/" component={Home1} />
+				<Route path="/list" component={List1} />
+				<Route path="/cart" component={Cart1} />
 				
 				<footer>
 					<ul>

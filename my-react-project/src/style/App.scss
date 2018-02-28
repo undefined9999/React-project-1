@@ -1,4 +1,3 @@
-@import '~antd-mobile/dist/antd-mobile.css';
 
 $bgcolor: blue;
 .active {
@@ -31,12 +30,7 @@ table{border-collapse:collapse;}
         flex-direction: column; 
         width: 100%;
         height: 100%;
-        div{
-            display: flex; 
-        flex-direction: column; 
-        width: 100%;
-        height: 100%;
-        }
+     
 }
 #app{
         display: flex; 

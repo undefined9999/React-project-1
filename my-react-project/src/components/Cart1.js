@@ -36,9 +36,7 @@ export default class Orders extends Component {
 	}
 	render() {
 		return (
-			<div style={{ width: '100%', height:'100%',
-			display:'flex',flex:'1',flexDirection: 'column'
-			}}>
+			<div style={{ width: '100%', height:'100%'}}>
 			<header>
 				<a className="nav-toggle" title="菜单"></a>
 				<h1 className="nav-logo"> 
@@ -53,7 +51,9 @@ export default class Orders extends Component {
 						<Carousel
 	          autoplay={true}
 	          infinite={true}
-	          selectedIndex={1}         
+	          selectedIndex={1}
+
+	         
 	        >
 	          {this.state.banner.map((item,index) => { 
 	          	return(
@@ -87,16 +87,6 @@ export default class Orders extends Component {
 				<div className="section-floor">
 				
 				</div>
-				
-				<div className="floor-container">
-	       	    <ul className="box-products-items">
-	       	    	{
-	       	    		this.state.layout.map((item,index)=>{
-	       	    			return <li key={index}><img src={item.src} alt="" /></li>
-	       	    		})
-	       	    	}
-	       	    </ul>
-	       </div>
 			</main>
 		</div>
 		)

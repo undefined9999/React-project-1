@@ -56,8 +56,12 @@
     "test": "react-app-rewired test --env=jsdom"
   },
   "proxy": {
-    "/v4": {
-      "target": "https://m.maizuo.com",
+    "/marketing": {
+      "target": "https://resource.smartisan.com",
+      "changeOrigin": true
+    },
+    "/product": {
+      "target": "https://www.smartisan.com",
       "changeOrigin": true
     }
   },
