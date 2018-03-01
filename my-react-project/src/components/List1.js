@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
+
+
   NavLink
 } from 'react-router-dom';
 import '../style/Home1.scss';
@@ -38,7 +38,7 @@ export default class Orders extends Component {
 		return (
 			<div style={{ width: '100%', height:'100%'}}>
 			<header>
-				<a className="nav-toggle" title="菜单"></a>
+				<a href="" className="nav-toggle" title="菜单">1</a>
 				<h1 className="nav-logo"> 
 				   <NavLink exact activeClassName="active" to="/">
 				   </NavLink>
