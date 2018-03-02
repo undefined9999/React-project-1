@@ -4,7 +4,7 @@ import {
 
   NavLink
 } from 'react-router-dom';
-import '../style/Home1.scss';
+import '../style/list1.scss';
 import axios from 'axios';
 import {Carousel} from 'antd-mobile';
 
@@ -13,81 +13,71 @@ export default class Orders extends Component {
 	    super(props);
 
 		    this.state={
-					banner:[],
-					shortcut:[],
-					layout:[],
-					hotsell:[],
-					purification:[]
+						main:[],
+						mains:[],
+						main1:[]
 				}
 	  }
 	componentDidMount(){
-		axios.get("/marketing/mobile/index_9d2b56c1bf495e7e6caf9d50e7444462.json")
+		var contents = [];
+		var contents1= [];
+		axios.get("/marketing/mobile/category_a0bce3afafc97a5e4c35a1468c953b71.json")
 		.then((res)=>{
-			console.log(res.data);
-		 this.setState({
-	         banner: res.data.banner.dataList,
-	         shortcut:res.data.shortcut.dataList,
-	         layout:res.data.floors[1].dataList,
-	         hotsell:res.data.floors[3].dataList,
-	         purification:res.data.floors[4].dataList.recommend
-	       })
+//			console.log(res.data)		
+			res.data.forEach((item,index)=>{
+				var content = [];
+				item.layout.dataList.forEach((item,index)=>{
+					content.push(item.sku)
+				})
+				axios.get(`/product/skus?ids=${content.toString()}`)
+				.then((res)=>{
+//					console.log(res)
+					contents.push(res.data.data.list)	
+					contents1.push(contents.slice(0,1))
+					this.setState({
+						mains:contents,
+						main1:contents1
+					})
+
+					console.log(this.state.main1)
+
+				})			
+			})
+			
+			this.setState({
+				main:res.data,
+			})
+//			console.log(this.state.main.slice(0,1))
 		})
-		
 	}
 	render() {
 		return (
-			<div style={{ width: '100%', height:'100%'}}>
-			<header>
-				<a href="" className="nav-toggle" title="菜单">1</a>
-				<h1 className="nav-logo"> 
-				   <NavLink exact activeClassName="active" to="/">
-				   </NavLink>
-				</h1>
-			</header>
+			<div style={{height:'100%',flex:'1',display:'flex',flexDirection:'column'}}>
 			
-			<main>
-				<section>
-        	<div className="banner">
-						<Carousel
-	          autoplay={true}
-	          infinite={true}
-	          selectedIndex={1}
-
-	         
-	        >
-	          {this.state.banner.map((item,index) => { 
-	          	return(
-	            <a key={index}>
-	              <img
-	                src={item.src}
-	                alt=""
-	                style={{ width: '100%', verticalAlign: 'top' }}
-	              />
-	            </a>
-	           )
-	          })}
-	        </Carousel>
-
-        	</div>
-
-	       	    <div className="short-cut">
-	       	    {
-	       	    	this.state.shortcut.map((item,index)=>{
-	       	    		return(
-	       	    			<a href={item.linkUrl} key={item.linkUrl}>
-	       	    				<img  src={item.src} alt="" />
-	       	    				<p>{item.labelTitle}</p>
-	       	    			</a>
-	       	    		)
-	       	    	})
-	       	    }
-	       	    </div>
-				</section>
-				
-				<div className="section-floor">
-				
-				</div>
-			</main>
+			<div className='header'>
+				<a href="" title="菜单">1</a>
+				<h1 className="nav-title"> 
+						分类
+				</h1>
+			</div>
+			
+			<div className="aside">
+		     {
+      			this.state.main.map((item,index)=>{
+      				return(
+      					<div key={item.name}>
+	      					<div className="title-wrapper">
+						         <h2>{item.name}</h2>
+					        </div>
+					        <div className="proimg">
+					        	<img src={item.image.src} alt="" width = '100%' />
+					        </div>
+				        </div>
+      				)
+      			})
+      		}               	   				
+			</div>
+			
 		</div>
 		)
 	}

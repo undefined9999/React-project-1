@@ -64,6 +64,24 @@ flex-direction: column;
 .section-floor{
    height:270px;
 }
+.fl0main{
+        padding: .9rem .6rem;
+        box-sizing: border-box;
+        ul{
+            overflow-y: hidden;
+            overflow-x: auto;
+            display: flex;
+            flex-wrap: nowrap;
+            height:210px;
+            li{
+                    width: 36%;
+                     padding-right: .4rem;
+                     a{
+                         display: block;
+                     }
+            }
+        }
+}
 
 .floor-container{
     overflow: hidden;height: 118px;margin-top: .2rem;background:#fff;margin-bottom:0.55rem;

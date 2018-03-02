@@ -20,6 +20,7 @@ export default class Orders extends Component {
 					shortcut:[],
 					layout:[],
 					floors:[],
+					floor0:[],
 					floor3:["https://resource.smartisan.com/resource/c71ce2297b362f415f1e74d56d867aed.png?x-oss-process=image/resize,w_972/format,webp","https://resource.smartisan.com/resource/e883f15eed51a49e1fbc9d8ddd82460b.png?x-oss-process=image/resize,w_972/format,webp"],
 					floor4:[],
           floor5id:[],
@@ -78,6 +79,14 @@ axios.get(`/product/skus?ids=${res.data.floors[10].dataList.toString()}`)
 				this.setState({
 					floor11:res.data.data.list
 				})
+			})
+axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
+			.then((res)=>{
+//				console.log(res.data.data.list)
+				this.setState({
+					floor0:res.data.data.list
+				})
+				console.log(this.state.floor0)
 			})
 		 var arr = this.state.floors[6].dataList
 //		 console.log(arr)
@@ -170,8 +179,25 @@ axios.get(`/product/skus?ids=${res.data.floors[10].dataList.toString()}`)
         	})
         }
          
-	          <div className="fl7main">
-				
+	          <div className="fl0main">
+							<ul>
+                      {
+                        this.state.floor0.map((item,index)=>{
+                            return(
+                              <li key={index}>
+                                <a href={`https://www.smartisan.com/item/${item.id}`} >
+                                  <img src={item.shop_info.ali_image} alt="" width = '100%'/>
+                                </a>
+                                <div className="zi">
+           <h4>{item.shop_info.sku_mobile_title}</h4>
+                      <p>{item.shop_info.sku_mobile_sub_title}</p>
+                      <span>￥{item.price}</span>
+                   </div>         
+                              </li>
+                            )
+                        })
+                      }
+                    </ul>
 						</div>
 			</div>
 				
