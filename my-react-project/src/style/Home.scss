@@ -1,8 +1,5 @@
 
-
 $bgcolor: blue;
-
-
 
 footer{
     width:100%;height:54px;background: #fff;display: flex;
@@ -10,12 +7,11 @@ footer{
     ul{
         width:100%;height: 100%;display: flex;
         li{
-            width:25%;height:100%;display: flex;
-           
+            width:25%;height:100%;display: flex;          
             a{
-             width:100%;height:100%;display: flex;
-             flex-direction: column;align-items: center;
-             text-align: center;padding-top: 5px;box-sizing: border-box;
+                 width:100%;height:100%;display: flex;
+                 flex-direction: column;align-items: center;
+                 text-align: center;padding-top: 5px;box-sizing: border-box;
                 img{
                     width:27px;height:27px;
                 }
@@ -23,9 +19,7 @@ footer{
                     width:100%;font-size: 6px !important;
                     line-height: 15px;
                 }
-            }
-            
-            
+            }            
         }
     }
 }

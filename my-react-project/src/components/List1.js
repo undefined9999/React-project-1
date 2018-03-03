@@ -1,19 +1,16 @@
 import React, {Component} from 'react';
-
 import '../style/list1.scss';
 import axios from 'axios';
-
 
 export default class Orders extends Component {
 	constructor(props) {
 	    super(props);
-
 		    this.state={
-						main:[],
-						mains:[],
-						main1:[]
-				}
-	  }
+				main:[],
+				mains:[],
+				main1:[]
+			}
+  	}
 	componentDidMount(){
 		var contents = [];
 		var contents1= [];
@@ -34,12 +31,9 @@ export default class Orders extends Component {
 						mains:contents,
 						main1:contents1
 					})
-
 					console.log(this.state.main1)
-
 				})			
-			})
-			
+			})			
 			this.setState({
 				main:res.data,
 			})
@@ -48,33 +42,28 @@ export default class Orders extends Component {
 	}
 	render() {
 		return (
-			<div style={{height:'100%',flex:'1',display:'flex',flexDirection:'column'}}>
-			
-			<div className='header'>
-				<a href="" title="菜单">1</a>
-				<h1 className="nav-title"> 
-						分类
-				</h1>
+			<div style={{height:'100%',flex:'1',display:'flex',flexDirection:'column'}}>			
+				<div className='header'>
+					<a href="" title="菜单">1</a>
+					<h1 className="nav-title">分类</h1>
+				</div>				
+				<div className="aside">
+			     	{
+		      			this.state.main.map((item,index)=>{
+		      				return(
+		      					<div key={item.name} className="floor7">
+			      					<div className="title-wrapper">
+								         <h3>{item.name}</h3>
+							        </div>
+							        <div className="proimg">
+							        	<img src={item.image.src} alt="" width = '100%' />
+							        </div>
+			       		 		</div>
+		      				)
+		      			})
+		      		}               	   				
+				</div>			
 			</div>
-			
-			<div className="aside">
-		     {
-      			this.state.main.map((item,index)=>{
-      				return(
-      					<div key={item.name} className="floor7">
-	      					<div className="title-wrapper">
-						         <h3>{item.name}</h3>
-					        </div>
-					        <div className="proimg">
-					        	<img src={item.image.src} alt="" width = '100%' />
-					        </div>
-				        </div>
-      				)
-      			})
-      		}               	   				
-			</div>
-			
-		</div>
 		)
 	}
 }

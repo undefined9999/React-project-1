@@ -1,11 +1,12 @@
 
 $bgcolor: blue;
 .active {
-	    background: linear-gradient(0deg,hsla(0,0%,100%,.05),rgba(0,0,0,.05));
+    background: linear-gradient(0deg,hsla(0,0%,100%,.05),rgba(0,0,0,.05));
     position: relative;
     box-shadow: inset 5px 0 3px -3px rgba(0,0,0,.01), inset -5px 0 3px -3px rgba(0,0,0,.01);
 
 }
+
 @charset "utf-8";
 /* CSS Document */
 body,h1,h3,h2,h4,h5,h6,p,dl,dt,dd,ul,li,img,table,legend,ol,form,input,fieldset,th,td,iframe{margin:0; padding:0;}
