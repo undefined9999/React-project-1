@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../style/Home.scss';
 import Home1 from './Home1';
-import Home12 from './Home12';
+//import Home12 from './Home12';
 import List1 from './List1';
 import Cart1 from './Cart1';
 

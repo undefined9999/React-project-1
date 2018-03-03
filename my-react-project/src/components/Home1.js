@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {
 
-
+	Link,
   NavLink
 } from 'react-router-dom';
 import '../style/Home1.scss';
@@ -86,7 +86,7 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
 				this.setState({
 					floor0:res.data.data.list
 				})
-				console.log(this.state.floor0)
+//				console.log(this.state.floor0)
 			})
 		 var arr = this.state.floors[6].dataList
 //		 console.log(arr)
@@ -126,7 +126,7 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
 			display:'flex',flex:'1',flexDirection: 'column'
 			}}>
 			<header>
-				<a href="" className="nav-toggle" title="菜单">.</a>
+				<Link to="" className="nav-toggle" title="菜单">.</Link>
 				<h1 className="nav-logo"> 
 				   <NavLink exact activeClassName="active" to="/">
 				   </NavLink>
@@ -141,9 +141,10 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
 	          infinite={true}
 	          selectedIndex={1}         
 	        >
-	          {this.state.banner.map((item,index) => { 
+	          {this.state.banner.map((item,index) => {
+//	          console.log(item)	
 	          	return(
-	            <a key={index}>
+	            <a href={item.linkUrl} key={index}>
 	              <img
 	                src={item.src}
 	                alt=""
@@ -159,6 +160,7 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
 	       	    <div className="short-cut">
 	       	    {
 	       	    	this.state.shortcut.map((item,index)=>{
+	       	    		
 	       	    		return(
 	       	    			<a href={item.linkUrl} key={item.linkUrl}>
 	       	    				<img  src={item.src} alt="" />
@@ -185,9 +187,9 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
                         this.state.floor0.map((item,index)=>{
                             return(
                               <li key={index}>
-                                <a href={`https://www.smartisan.com/item/${item.id}`} >
+                                <Link to={`/detail/${item.spu_id}`} >
                                   <img src={item.shop_info.ali_image} alt="" width = '100%'/>
-                                </a>
+                                </Link>
                                 <div className="zi">
            <h4>{item.shop_info.sku_mobile_title}</h4>
                       <p>{item.shop_info.sku_mobile_sub_title}</p>
@@ -225,7 +227,7 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
           selectedIndex={1}
         >
           {this.state.floor3.map(val => (
-            <a key={val} style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}>
+            <Link to="" key={val} style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}>
               <img src={val} alt="" style={{ width: '100%', verticalAlign: 'top' }} onLoad={() => {
                   window.dispatchEvent(new Event('resize'));
                   this.setState({ imgHeight: 'auto' });
@@ -236,7 +238,7 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
                 <span>￥
                   1799,00</span>
              </div>
-            </a>
+            </Link>
             
           ))
           
@@ -266,7 +268,7 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
                 this.state.plus.map((ite,index)=>{
 //                	console.log(ite)
                     return(
-                      <a href={`https://www.smartisan.com/item/${ite.id}`} 
+                      <Link to={`/detail/${ite.spu_id}`} 
                       key={ite.id}>
                       <img src={ite.shop_info.ali_image} alt=""/>
                       <div className="zi">
@@ -274,7 +276,7 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
                       <p>{ite.shop_info.sub_title}</p>
                       <span>￥{ite.price}</span>
                    </div>
-                   </a>
+                   </Link>
                       
                     )
                   
@@ -284,11 +286,11 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
                   {
                     this.state.floor5id1.map((item,index)=>{
                       return(
-                        <a href={`https://www.smartisan.com/item/${item.id}`} 
+                        <Link to={`/detail/${item.spu_id}`} 
                         className="fl5small" key={item.id}>
                           <img src={item.shop_info.ali_image} alt=""/>
                           <span>{item.name}</span>
-                        </a>
+                        </Link>
                       )
                     })
 
@@ -301,9 +303,9 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
         		{
              this.state.floor6.slice(0,3).map((item, index)=>{
                return(
-               	 <a href={item.linkUrl} key={index}>					   
+               	 <Link to={item.linkUrl} key={index}>					   
                  	<img src={item.src} alt="" />
-                 </a>
+                 </Link>
                )
              })
             }
@@ -312,9 +314,9 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
         		{
              this.state.floor6.slice(3,4).map((item, index)=>{
                return(
-               	 <a href={item.linkUrl} key={index}>				   
+               	 <Link to={item.linkUrl} key={index}>				   
                  	<img src={item.src} alt="" />
-                 </a>
+                 </Link>
                )
              })
             }
@@ -335,9 +337,9 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
                         this.state.floor7.map((item,index)=>{
                             return(
                               <li key={index}>
-                                <a href={`https://www.smartisan.com/item/${item.id}`} >
+                                <Link to={`/detail/${item.spu_id}`} >
                                   <img src={item.sku_info[0].ali_image} alt=""/>
-                                </a>
+                                </Link>
                                 <div className="zi">
                       <h4>{item.sku_info[0].title}</h4>
                       <p>{item.sku_info[0].sub_title}</p>
@@ -366,9 +368,9 @@ axios.get(`/product/skus?ids=${res.data.floors[0].dataList}`)
 this.state.floor8id1.slice(1,6).reverse().map((item,index)=>{
                             return(
                               <li key={index}>
-                                <a href={`https://www.smartisan.com/item/${item.id}`} >
+                                <Link to={`/detail/${item.spu_id}`} >
                                   <img src={item.shop_info.ali_image} alt=""/>
-                                </a>
+                                </Link>
                                 <div className="zi">
                       <h4>{item.shop_info.sku_mobile_sub_title}</h4>
                       <p>{item.shop_info.sku_mobile_title}</p>
@@ -407,9 +409,9 @@ this.state.floor8id1.slice(1,6).reverse().map((item,index)=>{
                         this.state.floor10.map((item,index)=>{
                             return(
                               <li key={index}>
-                                <a href={`https://www.smartisan.com/item/${item.id}`} >
+                                <Link to={`/detail/${item.spu_id}`} >
                                   <img src={item.shop_info.ali_image} alt="" width = '100%'/>
-                                </a>
+                                </Link>
                                 <div className="zi">
            <h4>{item.shop_info.sku_mobile_title}</h4>
                       <p>{item.shop_info.sku_mobile_sub_title}</p>
@@ -438,9 +440,9 @@ this.state.floor8id1.slice(1,6).reverse().map((item,index)=>{
                         this.state.floor11.map((item,index)=>{
                             return(
                               <li key={index}>
-                                <a href={`https://www.smartisan.com/item/${item.id}`} >
+                                <Link to={`/detail/${item.spu_id}`} >
                                   <img src={item.shop_info.ali_image} alt="" width = '100%'/>
-                                </a>
+                                </Link>
                                 <div className="zi">
            <h4>{item.shop_info.sku_mobile_title}</h4>
                       <p>{item.shop_info.sku_mobile_sub_title}</p>

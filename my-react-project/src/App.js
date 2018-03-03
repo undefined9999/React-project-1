@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import './style/App.scss';
 import Home from './components/Home';
-
+import Detail from './components/Detail';
 
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
 					<Route path="/list" component={Home} />
 					<Route path="/cart" component={Home} />
-					
+					<Route path="/detail/:detailId" component={Detail}/>
         </div>
       </Router>
     )

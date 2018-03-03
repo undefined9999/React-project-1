@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
-import {
 
-
-  NavLink
-} from 'react-router-dom';
 import '../style/list1.scss';
 import axios from 'axios';
-import {Carousel} from 'antd-mobile';
+
 
 export default class Orders extends Component {
 	constructor(props) {
@@ -65,9 +61,9 @@ export default class Orders extends Component {
 		     {
       			this.state.main.map((item,index)=>{
       				return(
-      					<div key={item.name}>
+      					<div key={item.name} className="floor7">
 	      					<div className="title-wrapper">
-						         <h2>{item.name}</h2>
+						         <h3>{item.name}</h3>
 					        </div>
 					        <div className="proimg">
 					        	<img src={item.image.src} alt="" width = '100%' />

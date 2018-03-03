@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import '../style/Home1.scss';
 import axios from 'axios';
-import {Carousel} from 'antd-mobile';
+
 
 export default class Orders extends Component {
 	constructor(props) {
@@ -39,7 +39,7 @@ export default class Orders extends Component {
 //		 console.log(this.state.conent)
 		 this.state.conent.forEach((item,index)=>{
 //		 	console.log(item.dataList);
-		 	if(item.dataList.length == 8 && item.floorName == "坚果 Pro 2 及配件"){
+		 	if(item.dataList.length === 8 && item.floorName === "坚果 Pro 2 及配件"){
 		 		var arr = [];
 		 		arr.push(item)
 		 		this.setState({
@@ -47,7 +47,7 @@ export default class Orders extends Component {
 		 		})
 		 		console.log(this.state.floor6)
 		 		this.getaxios(item.dataList)
-		 	}else if(item.dataList.length == 18){
+		 	}else if(item.dataList.length === 18){
 		 		this.setState({
 		 			floor8: item.dataList
 		 		})
